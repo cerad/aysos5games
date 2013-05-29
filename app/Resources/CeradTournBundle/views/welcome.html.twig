@@ -1,0 +1,27 @@
+{% extends '@CeradTourn/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/forms.css') }}" media="all" />
+{% endblock %}
+   
+{% block janrain %}{% include '@CeradJanrain/Janrain/janrain.js.twig' %}{% endblock %}
+   
+{% block content %}
+<h3>Welcome</h3>
+<p>
+    Welcome to the AYSO National Games 2014 Referee Scheduling Site. 
+    This year we will be using the same zayso system that we used for the AYSO National Games 2012 event.
+    Returning referees from those events will already have a account.
+    New referees will need to create a Zayso account.
+</p>
+<h3>Zayso Signin</h3>
+<p>If you already have a Zayso account then sign in by clicking one of the icons below or filling out the sign in form.</p>
+<div id="janrainEngageEmbed"></div>
+{# include('@CeradTourn/account/login_form.html.twig')  #}
+{{ include('@CeradTourn/account/signin_form.html.twig') }}
+<h3>Create Zayso Account</h3>
+<p>
+    <a href="{{ path('cerad_tourn_account_create') }}">Click here to create a new account and register for the games.</a>
+</p>
+{% endblock %}

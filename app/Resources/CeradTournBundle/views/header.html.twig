@@ -1,0 +1,22 @@
+<div id="layout-header">
+  <a class="a-target-blank" href="http://section5.clubspaces.com/PageCustom.aspx?id=10&o=545142" target="_blank">
+    <img class="logo1" 
+         src="{{ asset('bundles/ceradapp/images/' ~ 'S5Games2013Logo.aspx') }}"
+         height="100" width="100" alt="AYSO Section 5 Games 2013 Site"/>
+  </a>
+  <a class="a-target-blank" href="http://ayso.org" target="_blank">
+    <img class="logo2" src="{{ asset('bundles/ceradapp/images/AysoLogo.jpg') }}" height="100" width="100" alt="AYSO Site"/>
+  </a>
+  <div class="inner-block">
+    <p style="text-align: center;">
+      <span style="color: blue;">AYSO Section 5 Games 2013 - June 14,15,15 - Knoxville, TN - Referee Scheduling Site</span>
+    </p>
+    <p style="margin-top: 2px; color: black; ">
+      <span style="color: blue;">Zayso User: </span>
+      <span style="color: green;">       
+        {% if     is_granted('ROLE_USER') %}{{ app.user.name }} {{ app.user.person.phone }}{% endif %}
+        {% if not is_granted('ROLE_USER') %}Guest{% endif %}          
+      </span>
+    </p>
+  </div>
+</div>

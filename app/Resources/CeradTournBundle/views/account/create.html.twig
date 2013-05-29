@@ -1,0 +1,24 @@
+{% extends '@CeradTourn/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/forms.css') }}" media="all" />
+{% endblock %}
+   
+{% block content %}
+{{ include('@CeradTourn/account/create_form.html.twig') }}
+<br />
+<div>
+    <h3>Instructions</h3>
+    <p>
+        You must have your 8-difit AYSOID volunteer number to create an account.
+        You should be able to look it up on www.eayso.org or ask your regional commissioner.
+        Your Regional Referee Administrator can confirm your referee certification
+        and volunteer form status in eAYSO.
+    </p><p>
+        In general you should only need one account per family.
+        Additional referees can be added to your account once it is created.
+        The will allow the account holder to sign up the other referees for games without having to switch accounts.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+<div id="layout-top-menu">
+  <ul style="float:left ">
+    <li><a href="{{ path('cerad_tourn_welcome')   }}">Welcome</a></li>
+    
+{% if is_granted('ROLE_USER') %}
+    <li><a href="{{ path('cerad_tourn_home')      }}">Home</a></li>
+{% endif %}
+    
+{#  <li><a href="{{ path('cerad_tourn_textalerts')}}">Text Alerts</a></li> #}
+        
+{#  <li><a href="{{ path('cerad_tourn_schedule_team_list')   }}">Team Schedule</a></li> #}
+
+{% if is_granted('ROLE_USER') %}
+    <li><a href="{{ path('cerad_tourn_schedule_my_list')     }}">My Schedule</a></li>
+{%endif %}
+    
+    <li><a href="{{ path('cerad_tourn_schedule_referee_list')}}">Referee Schedule</a></li>
+    
+    <li><a href="{{ path('cerad_tourn_schedule_poolplay')    }}">Pool Play</a></li>
+    <li><a href="{{ path('cerad_tourn_schedule_playoffs')    }}">Playoffs</a></li>
+    <li><a href="{{ path('cerad_tourn_schedule_results')     }}">Champions</a></li>
+            
+</ul>
+        
+<ul style="float: right">
+    
+{% if is_granted('ROLE_SCORER') %}
+    <li><a href="{{ path('zayso_core_admin_schedule_results') }}">Scoring</a></li>
+{% endif %}
+    
+{% if is_granted('ROLE_ADMIN') %}
+    <li><a href="{{ path('zayso_natgames_admin') }}">Admin</a></li>
+{% endif %}
+
+    <li><a href="{{ path('cerad_tourn_contact') }}">Contact Us</a></li>
+   
+{% if is_granted('ROLE_USER') %}
+   <li><a href="{{ path('fos_user_security_logout') }}">Sign Out</a></li>
+{% endif %}
+   
+{% if not is_granted('ROLE_USER') %}
+   <li><a href="{{ path('fos_user_security_login') }}">Sign In</a></li>
+{% endif %}          
+
+  </ul>
+  <div class="inner"></div>
+</div>

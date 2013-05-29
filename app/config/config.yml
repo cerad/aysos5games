@@ -1,6 +1,8 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: doctrine.yml }
+    - { resource: project.yml  }
 
 framework:
     #esi:             ~
@@ -38,24 +40,6 @@ assetic:
         #yui_css:
         #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
 
-# Doctrine Configuration
-doctrine:
-    dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: %kernel.root_dir%/data/data.db3
-        # path:     %database_path%
-
-    orm:
-        auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
@@ -63,3 +47,26 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+# FOSUser Configuration
+fos_user:
+    db_driver:     orm
+    firewall_name: main
+    user_class:    Cerad\Bundle\AccountBundle\Entity\AccountUser
+    model_manager_name: accounts
+    
+    service:
+        user_manager: cerad_account.user_manager
+    
+#   from_email:
+#       address:        noreply@zayso.org
+#       sender_name:    Zayso No Reply
+    
+    registration:
+        form:
+            type:               cerad_account_registration
+        confirmation:
+            enabled:            true
+            from_email:
+                address:        admin@zayso.org
+                sender_name:    Zayso Registration

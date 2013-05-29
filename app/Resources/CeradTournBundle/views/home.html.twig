@@ -1,0 +1,57 @@
+{% extends '@CeradTourn/layout.html.twig' %}
+
+{% block content %}
+<table class="account-person-list" border="1">
+    <tr><th colspan="4">People Associated With This Account</th></tr>
+    <tr>
+        <th>Account Information</th>
+        <th>AYSO Information</th>
+        <th>Tournament Plans</th>
+   </tr>
+   {% for personPerson in account.person.persons %}
+   {% set person    = personPerson.slave       %}
+   {% set volunteer = person.volunteerAYSO     %}
+   {% set referee   = person.certRefereeAYSO   %}
+   {% set plan      = person.plan(project.key) %}
+   <tr>
+        <td><table>
+            <tr>
+                <td>Person:</td>
+                <td colspan="1">
+                    <a href="{{ path('cerad_tourn_person_person_edit', { 'id': personPerson.id }) }}">
+                        {{ person.name }}
+                    </a>
+                </td>
+            </tr>
+            <tr><td>Relation:</td><td>{{ personPerson.role }}</td></tr>
+            {% if personPerson.isRolePrimary %}
+            <tr><td>Account:</td><td>
+                <a href="{{ path('cerad_tourn_account_edit', { 'id': account.id }) }}">
+                    {{ account.username }}
+                </a>
+            </td></tr>
+            {% for identifier in account.identifiers %}
+                <tr><td>Sign In:</td><td>{{ identifier.providerName }}</td></tr>
+            {% endfor %}
+            {% endif %}
+        </table></td>
+        <td><table>
+            <tr><td>AYSO ID:</td>   <td>{{ volunteer.memId   }}</td></tr>
+            <tr><td>Vol Year:</td>  <td>{{ volunteer.memYear }}</td></tr>
+            <tr><td>Safe Haven:</td><td>{{ volunteer.cvpa    }}</td></tr>
+            <tr><td>Ref Badge:</td> <td>{{ referee.badge     }}</td></tr>
+            <tr><td>Region:</td>    <td>{{ volunteer.league  }}</td></tr>
+        </table></td>
+        <td><table>
+        {% if plan %}
+           <tr><td>Will Attend: </td><td>{{ plan.attending   }}</td></tr>
+           <tr><td>Will Referee:</td><td>{{ plan.refereeing  }}</td></tr>             
+        {% else %}
+           <tr><td colspan="2">Please set your plans.</td></tr>
+        {% endif %}
+           <tr><td colspan="2"><a href="{{ path('cerad_tourn_person_plan',{ id: person.id }) }}">Update your plans.</td></tr>
+        </table></td>
+    </tr>
+   {% endfor %}
+</table
+{% endblock %}

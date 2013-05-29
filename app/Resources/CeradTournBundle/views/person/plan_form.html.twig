@@ -1,0 +1,13 @@
+<div>Tournament plans for: {{ person.name }}</div>
+<form 
+    id="zayso_volunteer_plan_form" 
+    class="zayso_form2" 
+    action="{{ path('cerad_tourn_person_plan',{ id: person.id }) }}" 
+    method="post" {{ form_enctype(form) }}>
+<fieldset>
+    {{ form_rest(form) }}
+</fieldset>
+<fieldset>
+    <input type="submit" value="Submit" />
+</fieldset>
+</form>

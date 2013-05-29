@@ -1,0 +1,176 @@
+parameters:
+
+    cerad_tourn_project:
+
+        info:     
+          key:       AYSONationalGames2014
+          status:    Active
+          season:    SU2014
+          sport:     Soccer
+          domain:    AYSO
+          domainSub: NatGames
+             
+          title:   "AYSO National Games 2014"
+          desc:    "AYSO National Games 2014 - Torrence, Califorina - July 4..10"
+                 
+        plan:
+         
+         attending:
+           type:    select
+           label:   I will attend the games
+           default: na
+           choices:
+             na:    Not yet answered
+             no:    No
+             yes:   Yes - For Sure
+             yesx:  Yes - If my team is selected
+             maybe: Maybe
+           
+         refereeing:
+           type:    select
+           label:   I will referee
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         refLevelCR:
+           type:    select
+           label:   Level to center at
+           default: na
+           choices: 
+             na:    na 
+             U10:   U10 
+             U12:   U12
+             U14:   U14
+             U16:   U16
+             U19:   U19
+             
+         refLevelAR:
+           type:    select
+           label:   Level to assist at
+           default: na
+           choices: 
+             na:    na 
+             U10:   U10 
+             U12:   U12
+             U14:   U14
+             U16:   U16
+             U19:   U19
+             
+         assessing:
+           type:    select
+           label:   I will do assessments/observations
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         reqAssess:
+           type:    select
+           label:   I request an assessment or observation
+           default: no
+           choices: 
+             no:           No 
+             Informal:     Informal 
+             Intermediate: Intermediate
+             AdvancedCR:   Advanced CR
+             AdvancedAR:   Adcanced AR
+             AdvancedCRAR: Advanced CR and AR
+             NationalCR:   National CR
+             NationalAR:   Advanced AR
+             NationalCRAR: National CR and AR
+             
+         coaching:
+           type:    select
+           label:   I will coach or manage a team
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         volunteering:
+           type:    select
+           label:   I will volunteer for other jobs
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         playing:
+           type:    select
+           label:   I have (or am) a player in the games
+           default: no
+           choices: { no: No, yes: Yes, player: Yes - I am a player }
+           
+         tshirt:
+           type:    select
+           label:   T-Shirt Size
+           default: na
+           choices: 
+             na:        na
+             youthm:    Youth Medium 
+             youthl:    Youth Large
+             adults:    Adult Small
+             adultm:    Adult Medium
+             adultl:    Adult Large
+             adultlx:   Adult Large X
+             adultlxx:  Adult Large XX
+             adultlxxx: Adult Large XXX
+             
+         shuttle:
+           type:    select
+           label:   I need shuttle service during the games
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         housing:
+           type:    select
+           label:   I would use low cost referee housing
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         hotel:
+           type:  text
+           label: Hotel staying at
+           size:  30
+           
+         opening:
+           type:    select
+           label:   Attending the Tuesday Night Opening Ceremony?
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         AvailWen:
+           type:    select
+           label:   Available Wednesday (Jamborees)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         AvailThu:
+           type:    select
+           label:   Available Thursday (Pool Play)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+
+         AvailFri:
+           type:    select
+           label:   Available Friday (Pool Play)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+
+         AvailSatMorn:
+           type:    select
+           label:   Available Saturday Morning (Pool Play)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+         AvailSatAfter:
+           type:    select
+           label:   Available Saturday Afternoon (Quarter Finals)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Yes - If My Team Advances}
+
+         AvailSunMorn:
+           type:    select
+           label:   Available Sunday Morning (Semi-Finals)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Yes - If My Team Advances}
+
+         AvailSunAfter:
+           type:    select
+           label:   Available Sunday Afternoon (Finals)
+           default: no
+           choices: { no: No, yes: Yes, maybe: Yes - If My Team Advances}
