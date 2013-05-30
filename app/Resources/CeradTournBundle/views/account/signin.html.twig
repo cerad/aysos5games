@@ -1,0 +1,41 @@
+{% extends '@CeradTourn/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/forms.css') }}" media="all" />
+{% endblock %}
+   
+{% block janrain %}{% include '@CeradJanrain/Janrain/janrain.js.twig' %}{% endblock %}
+   
+{% block content %}
+<h2>Account Signin Help</h2>
+
+<h3>Sign in using socal network:</h3>
+<div id="janrainEngageEmbed"></div>
+
+<h3>Signin using form:</h3>
+{{ include('@CeradTourn/account/signin_form.html.twig') }}
+<p>
+  Notice that if you have forgotten your Zayso User name then you can also use 
+  your Zayso Email or your 8-digit volunter AYSO ID number.  If you still can't get past 
+  <span style="color: red">User name not found</span> then contact me.
+</p>
+
+<h3>Password Recovery</h3>
+<p>
+  If none of your social networds are working and you know your user name but can't remember your password 
+  then use this form to request a password reset.  
+  If you don't get an email within a minute or so then check your <em>SPAM</em> folder.
+</p>
+{{ include('@CeradAccount/password_reset_form.html.twig') }}
+
+<h3>Create New Zayso Account</h3>
+<p>
+  Create a new account by <a href="{{ path('cerad_tourn_account_create') }}">clicking here</a>.
+</p>
+    
+<h3>Help!</h3>
+<p>
+  Feel free to contact Art Hundiak at 256.457.5943 if the above instructions are confusing or don't seem to work.
+</p>
+{% endblock %}

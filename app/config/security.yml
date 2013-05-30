@@ -40,7 +40,7 @@ security:
             form_login:
                 provider:            cerad_account_user_provider
                 check_path:          fos_user_security_check
-                login_path:          fos_user_security_login
+                login_path:          cerad_tourn_account_signin
                 default_target_path: cerad_tourn_home
 
                 username_parameter:  cerad_account_signin[username]

@@ -19,7 +19,7 @@ fos_user_register:
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /account/resetting
+    prefix: /account/password-reset
 
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
@@ -30,3 +30,8 @@ fos_user_change_password:
 cerad_janrain:
     resource: "@CeradJanrainBundle/Resources/config/routing.yml"
     prefix: /account
+    
+# My own account stuff
+cerad_account:
+  resource: "@CeradAccountBundle/Resources/config/routing.yml"
+  prefix: /account
