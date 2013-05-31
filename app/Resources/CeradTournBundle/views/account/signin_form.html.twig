@@ -1,21 +1,19 @@
-<div class="account-signin">
 <form 
     id     = "zayso_signin_form"
-    class  = "zayso_signin_form" 
+    class  = "zayso_signin_form zayso_form1" 
     action = "{{ path('fos_user_security_check') }}" 
     method = "post" 
     {{ form_enctype(signinForm) }}
  >
-    <fieldset><legend><span>Zayso Signin</span></legend>
+    <fieldset><legend><span>Zayso Sign In</span></legend>
         {{ form_row(signinForm.username) }}
         {{ form_row(signinForm.password) }}
     </fieldset>
     <fieldset>
         <div class="zayso_form_controls">
-            <span></span>
+            <span><a href="">Forgot Password or User Name</a></span>
             <input type="submit" name="accountSignin" value="Signin" />
         </div>
     </fieldset>
 <div style="display: none;">{{ form_rest(signinForm) }}</div>
 </form>
-</div>
