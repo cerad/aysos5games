@@ -31,7 +31,9 @@
 
 </head>
 <body>
+{% if cerad_tourn_show_header() %}
 {{ include('@CeradTourn/header.html.twig')  }}
+{% endif %}
 {{ include('@CeradTourn/topmenu.html.twig') }}
 <div id="layout-content">
   {% block content %}{% endblock %}
