@@ -1,8 +1,19 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
-<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
-    </div>
+<form 
+    id     = "zayso_password_change_form"
+    class  = "zayso_password_change_form zayso_form1" 
+    action = "{{ path('fos_user_resetting_reset', {'token': token}  ) }}" 
+    method = "post" 
+    {{ form_enctype(form) }}
+ >
+    <fieldset>
+        {{ form_row(form.plainPassword.first,  { label: 'New Password' })  }}
+        {{ form_row(form.plainPassword.second, { label: 'New Password(confirm)' }) }}
+   </fieldset>
+    <fieldset>
+        <div class="zayso_form_controls">
+            <span></span>
+            <input type="submit" name="accountPasswordChange" value="Change Password" />
+        </div>
+    </fieldset>
+<div style="display: none;">{{ form_rest(form) }}</div>
 </form>

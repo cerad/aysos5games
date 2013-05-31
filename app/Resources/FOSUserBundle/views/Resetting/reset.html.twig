@@ -1,5 +1,11 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends '@CeradTourn/layout.html.twig' %}
 
-{% block fos_user_content %}
+{% block stylesheets %}
+    {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/forms.css') }}" media="all" />
+{% endblock %}
+   
+{% block content %}
+<h2>Change Account Password</h2>
 {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-{% endblock fos_user_content %}
+{% endblock%}
