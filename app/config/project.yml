@@ -23,28 +23,28 @@ parameters:
            default: na
            choices:
              na:    Need Answer
-             no:    No
-             yes:   Yes
-             maybe: Maybe
+             No:    No
+             Yes:   Yes
+             Maybe: Maybe
            
          refereeing:
            type:    select
            label:   I will referee
-           default: no
-           choices: { no: No, yes: Yes, maybe: Maybe}
+           default: No
+           choices: { No: No, Yes: Yes, Maybe: Maybe}
                         
          assessing:
            type:    select
            label:   I will do assessments/observations
-           default: no
-           choices: { no: No, yes: Yes, maybe: Maybe}
+           default: No
+           choices: { No: No, Yes: Yes, Maybe: Maybe}
            
          reqAssess:
            type:    select
            label:   I request an assessment or observation
-           default: no
+           default: No
            choices: 
-             no:           No 
+             No:           No 
              Informal:     Informal 
              Intermediate: Intermediate
              AdvancedCR:   Advanced CR
@@ -57,20 +57,20 @@ parameters:
          coaching:
            type:    select
            label:   I will coach or manage a team
-           default: no
-           choices: { no: No, yes: Yes, maybe: Maybe}
+           default: No
+           choices: { No: No, Yes: Yes, Maybe: Maybe}
            
          volunteering:
            type:    select
            label:   I will volunteer for other jobs
-           default: no
-           choices: { no: No, yes: Yes, maybe: Maybe}
+           default: No
+           choices: { No: No, Yes: Yes, Maybe: Maybe}
            
          playing:
            type:    select
            label:   I have (or am) a player in the games
-           default: no
-           choices: { no: No, yes: Yes, player: Yes - I am a player }
+           default: No
+           choices: { No: No, Yes: Yes, Player: Yes - I am a player }
            
          tshirt:
            type:    select
@@ -86,5 +86,3 @@ parameters:
              adultlx:   Adult Large X
              adultlxx:  Adult Large XX
              adultlxxx: Adult Large XXX
-             
-           
