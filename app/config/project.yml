@@ -9,8 +9,8 @@ parameters:
           status:    Active
           season:    SU2013
           sport:     Soccer
-          domain:    AYSO
-          domainSub: S5Games
+          domain:    AYSOS05
+          domainSub: Games
              
           title:   "AYSO Section 5 Games 2013"
           desc:    "AYSO Section 5 Games 2013 - June 14,15,16 - Knoxville, TN"
