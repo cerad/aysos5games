@@ -1,22 +1,26 @@
 <?php
 namespace Cerad\Bundle\AppBundle\Schedule;
 
+/* ==========================================================
+ * This was originally going to be used to transform the final schedule
+ * into something that could be imported.  Ended up doing the transforming by hand.
+ */
 use Cerad\Component\Excel\Loader as BaseLoader;
 
-class ScheduleImport extends BaseLoader
+class ScheduleTransform extends BaseLoader
 {
     protected $record = array
     (
-        'num'      => array('cols' => 'Game','req' => true),
-        'dow'      => array('cols' => 'Dow',   'req' => true),
-        'time'     => array('cols' => 'Time',  'req' => true),
-        
-        'level'    => array('cols' => 'Pool', 'req' => true),
+        'div'      => array('cols' => 'Div',   'req' => true),
         'field'    => array('cols' => 'Field', 'req' => true),
-        'type'     => array('cols' => 'Type',  'req' => true),
+        'time'     => array('cols' => 'time',  'req' => true),
         
-        'homeTeam' => array('cols' => 'Home Team',  'req' => true),
-        'awayTeam' => array('cols' => 'Away Team',  'req' => true),
+        'fri'      => array('cols' => 'Fri Home - Away', 'req' => true),
+        'sat'      => array('cols' => 'Sat',             'req' => true),
+        'sun'      => array('cols' => 'Sun',             'req' => true),
+        
+        'boys'  => array('cols' => 'U10 Boys',  'req' => true),
+        'girls' => array('cols' => 'U10 Girls', 'req' => true),
     );
     protected $params;
     
@@ -38,32 +42,27 @@ class ScheduleImport extends BaseLoader
         
         switch($item['dow'])
         {
-            case 'Fri': $date = '06-14-2013'; break;
-            case 'Sat': $date = '06-15-2013'; break;
-            case 'Sun': $date = '06-16-2013'; break;
+            case 'FRI': $date = '05-17-2013'; break;
+            case 'SAT': $date = '05-18-2013'; break;
+            case 'SUN': $date = '05-19-2013'; break;
             default:
                 print_r($item); die('*** DOW ***');
         }
-        $time = $item['time'];
-        if (strlen($time) == 3) $time = '0' . $time;
-        $time = substr($time,0,2) . ':' . substr($time,2,2) . ':00';
-        
+        $time = $this->processTime($item['time']);
+
         $dtBeg = \DateTime::createFromFormat('m-d-Y*H:i:s',$date . ' ' . $time);
 
         $dt = $dtBeg->format('Y-m-d H:i');
        
         // Level processing
-        $level = $item['level'];
-        $age =   substr($level,0,3);
-        $sex =   substr($level,3,1);
+        $sex =   substr($item['level'],2,1);
+        $age = 'U' . (integer)$item['level'];
         
         switch($age)
         {
             case 'U10': $duration = 50; break;
             case 'U12': $duration = 60; break;
             case 'U14': $duration = 70; break;
-            case 'U16': $duration = 75; break;
-            case 'U19': $duration = 80; break;
             default:
                 print_r($item); die('*** AGE ***');
         }
@@ -72,33 +71,27 @@ class ScheduleImport extends BaseLoader
             'sport'     => $project->getSport(),
             'domain'    => $project->getDomain(),
             'domainSub' => $project->getDomainSub(),
-            'name'      => $level,
+            'name'      => $item['level'],
             'age'       => $age,
             'sex'       => $sex,
         );
         $level = $this->levelManager->processEntity($params,$this->persistFlag);
         
         // Field processing
-        $field = $item['field'];
-        $venue = null;
-        if (substr($field,0,2) == 'BC')   $venue = 'BC';
-        if (substr($field,0,2) == 'NB')   $venue = 'NB';
-        if (substr($field,0,4) == 'Pell') $venue = 'Pell';
-       
         $params = array
         (
             'season'    => $project->getSeason(),
             'domain'    => $project->getDomain(),
             'domainSub' => $project->getDomainSub(),
-            'name'      => $field,
-            'venue'     => $venue,
-            'venueSub'  => null,
+            'name'      => $item['field'],
+            'venue'     => 'RR',
+            'venueSub'  => substr($item['field'],2),
         );
         $field = $this->fieldManager->processEntity($params,$this->persistFlag);
 
-        // Actually pool type
         $pool = $item['type'];
-                
+        if (substr($pool,0,4) == 'POOL') $pool = substr($pool,0,4);
+        
         /* ==========================================================
          * Create game unless have one
          */
@@ -138,8 +131,8 @@ class ScheduleImport extends BaseLoader
         $homeTeam->setLevel($level);
         $awayTeam->setLevel($level);
         
-        $homeTeam->setName($item['homeTeam']);
-        $awayTeam->setName($item['awayTeam']);
+        $homeTeam->setName(strtoupper($item['homeTeam']));
+        $awayTeam->setName(strtoupper($item['awayTeam']));
         
         $gameManager->flush();
         
@@ -147,9 +140,59 @@ class ScheduleImport extends BaseLoader
         
         echo sprintf("DT %s %s %d %s\n",$dt,$item['dow'],$duration,$level->getName());
         return;
+        print_r($item); die();
+        $num = $item['num'] + 7000;
+        
+        $date = $item['date'];
+        $time = $item['time'];
+        
+        if (strlen($item['flight']) > strlen($item['bracket'])) $level = $item['flight'];
+        else                                                    $level = $item['bracket'];
+        
+        if (substr($level,0,2) == 'U9') $level = 'U09' . substr($level,2);
+        
+        switch($item['type'])
+        {
+            case 'Group Play':  $type = 'PP'; break;
+            case 'Semi-Finals': $type = 'SF'; break;
+            case 'Final':       $type = 'FM'; break;
+            case 'Consolation': $type = 'CM'; break;
+            
+            default: print_r($item); die("\nTYPE\n");
+        }
+        if (strlen($item['homeTeam'])) $homeTeam = $item['homeTeam'];
+        else                           $homeTeam = $type . ' ' . $item['homeClub'];
+        
+        if (strlen($item['awayTeam'])) $awayTeam = $item['awayTeam'];
+        else                           $awayTeam = $type . ' ' . $item['awayClub'];
+        
+        if ($homeTeam[0] == "'") $homeTeam = substr($homeTeam,1);
+        if ($awayTeam[0] == "'") $awayTeam = substr($awayTeam,1);
+        
+        if (isset($this->sites[$item['field']])) $site = $this->sites[$item['field']];
+        else
+        {
+            print_r($item); die("\nFIELD\n");
+        }
+        $game = array
+        (
+            'num'   => $num,
+            'date'  => $date,
+            'time'  => $time,
+            'type'  => $type,
+            'sport' => 'HFC Classic',
+            'level' => $level,
+            'site'  => $site,
+            'home'  => $homeTeam,
+            'away'  => $awayTeam,
+        );
+        
+        $this->items[] = $game;
+        
+        echo sprintf("%4d %8s %8s %-16s %-20s %-40s %-40s\n",$num,$date,$time,$level,$site,$homeTeam,$awayTeam);
+        
+        //print_r($item); die("\n");
     }
-    protected $persistFlag = false;
-    
     public function importFile($params)
     {   
         $this->persistFlag = $params['persist'];
@@ -166,6 +209,36 @@ class ScheduleImport extends BaseLoader
         
         return $results;
         
+    }
+    /* ==============================================================
+     * Overider this because need 2 passes
+     */
+    public function load($inputFileName, $worksheetName = null)
+    {
+        $reader = $this->excel->load($inputFileName);
+
+        if ($worksheetName) $ws = $reader->getSheetByName($worksheetName);
+        else                $ws = $reader->getSheet(0);
+        
+        $rows = $ws->toArray();
+        
+        $header = array_shift($rows);
+        
+        $this->processHeaderRow($header);
+        
+        // Process Teams
+        foreach($rows as $row)
+        {
+            $item = $this->processDataRow($row);
+            
+            $this->processTeamItem($item);
+        }
+        return $this->items;
+    }
+    protected function processTeamItem($item)
+    {
+        print_r($item);
+        die();
     }
 }
 ?>

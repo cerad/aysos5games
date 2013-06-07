@@ -7,7 +7,6 @@
   
 {% block content %}
 <h3>Referee Schedule</h3>
-<p>Not yet available.  Check back around June 10th or so.</p>
-{# include('@CeradTourn/schedule/referee/search.html.twig') #}
-{# include('@CeradTourn/schedule/referee/games.html.twig')  #}
+{% include('@CeradTourn/schedule/referee/search.html.twig') %}
+{% include('@CeradTourn/schedule/referee/games.html.twig')  %}
 {% endblock %}

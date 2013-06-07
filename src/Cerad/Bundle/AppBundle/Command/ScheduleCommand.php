@@ -29,7 +29,7 @@ class ScheduleCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $file = 'Schedule20130601.xls';
+        $file = 'Schedule20130607x.xls';
         $datax = $this->getParameter('datax');
         
         $project = $this->getService('cerad_tourn.project');
