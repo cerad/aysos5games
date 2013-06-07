@@ -21,12 +21,13 @@ class AppKernel extends Kernel
             
             new Cerad\Bundle\Legacy2012Bundle\CeradLegacy2012Bundle(),
             
-            new Cerad\Bundle\AccountBundle\CeradAccountBundle(),
-            new Cerad\Bundle\JanrainBundle\CeradJanrainBundle(),
-            new Cerad\Bundle\PersonBundle \CeradPersonBundle(),
-            new Cerad\Bundle\TournBundle  \CeradTournBundle(),
-            new Cerad\Bundle\GameBundle   \CeradGameBundle(),
-            new Cerad\Bundle\AppBundle    \CeradAppBundle(),
+            new Cerad\Bundle\AccountBundle   \CeradAccountBundle(),
+            new Cerad\Bundle\JanrainBundle   \CeradJanrainBundle(),
+            new Cerad\Bundle\PersonBundle    \CeradPersonBundle(),
+            new Cerad\Bundle\TournBundle     \CeradTournBundle(),
+            new Cerad\Bundle\TournAdminBundle\CeradTournAdminBundle(),
+            new Cerad\Bundle\GameBundle      \CeradGameBundle(),
+            new Cerad\Bundle\AppBundle       \CeradAppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
