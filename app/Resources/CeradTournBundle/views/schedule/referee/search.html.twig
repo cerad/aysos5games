@@ -7,24 +7,54 @@
 <td colspan="2">
 <table>
 <tr>
-    <td><table border="1"><tr>
+    <td><table border="1">
+    <tr><th colspan="20">Days</th></tr>
+    <tr>
+    {% set itemFirst = true %}         
     {% for item in form.dates %}
-        <td align="center">{{ form_label(item) }}<br />{{ form_widget(item) }}</td>
+        <td align="center">{{ form_label(item) }}<br />
+        {% if itemFirst %}
+            {{ form_widget(item, { 'attr': {'class': 'zayso-checkbox-all' }}) }}</td>
+        {% else %}
+            {{ form_widget(item) }}</td>
+        {% endif %}
+        {% set itemFirst = false %}
     {% endfor %}
-    <tr></table></td>
+    <tr>
+    </table></td>
     
-    <td><table border="1"><tr>
+    <td>
+    <table border="1">
+    <tr><th colspan="20">Ages</th></tr>
+    <tr>
+    {% set itemFirst = true %}         
     {% for item in form.ages %}
-        <td align="center">{{ form_label(item) }}<br />{{ form_widget(item) }}</td>
+        <td align="center">{{ form_label(item) }}<br />
+        {% if itemFirst %}
+            {{ form_widget(item, { 'attr': {'class': 'zayso-checkbox-all' }}) }}</td>
+        {% else %}
+            {{ form_widget(item) }}</td>
+        {% endif %}
+        {% set itemFirst = false %}
     {% endfor %}
-    <tr></table></td>
+    <tr>
+    </table></td>
     
-    <td><table border="1"><tr>
+    <td><table border="1">
+    <tr><th colspan="20">Genders</th></tr>
+    <tr>
+    {% set itemFirst = true %}         
     {% for item in form.genders %}
-        <td align="center">{{ form_label(item) }}<br />{{ form_widget(item) }}</td>
+        <td align="center">{{ form_label(item) }}<br />
+        {% if itemFirst %}
+            {{ form_widget(item, { 'attr': {'class': 'zayso-checkbox-all' }}) }}</td>
+        {% else %}
+            {{ form_widget(item) }}</td>
+        {% endif %}
+        {% set itemFirst = false %}
     {% endfor %}
-    <tr></table></td>
-    
+    <tr>
+    </table></td> 
 </tr>
 </table>
 </td>
