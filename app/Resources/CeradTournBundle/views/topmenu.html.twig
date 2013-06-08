@@ -24,11 +24,11 @@
         
 <ul style="float: right">
     
-{% if is_granted('ROLE_SCORER') %}
+{% if is_granted('ROLE_SCORERx') %}
     <li><a href="{{ path('zayso_core_admin_schedule_results') }}">Scoring</a></li>
 {% endif %}
     
-{% if is_granted('ROLE_ADMIN') %}
+{% if is_granted('ROLE_ADMINx') %}
     <li><a href="{{ path('zayso_natgames_admin') }}">Admin</a></li>
 {% endif %}
 
