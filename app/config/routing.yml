@@ -1,7 +1,10 @@
 # ==================================================
 # Tournament Routes
-cerad_tourn:
+cerad_tourn_bundle:
   resource: "@CeradTournBundle/Resources/config/routing.yml"
+  
+cerad_tourn_admin_bundle:
+  resource: "@CeradTournAdminBundle/Resources/config/routing.yml"
 
 # ==================================================
 # FOSUserBundle Stuff

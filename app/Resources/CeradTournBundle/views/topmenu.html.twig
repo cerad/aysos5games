@@ -28,8 +28,8 @@
     <li><a href="{{ path('zayso_core_admin_schedule_results') }}">Scoring</a></li>
 {% endif %}
     
-{% if is_granted('ROLE_ADMINx') %}
-    <li><a href="{{ path('zayso_natgames_admin') }}">Admin</a></li>
+{% if is_granted('ROLE_ADMIN') %}
+    <li><a href="{{ path('cerad_tourn_admin') }}">Admin</a></li>
 {% endif %}
 
     <li><a href="{{ path('cerad_tourn_contact') }}">Contact Us</a></li>
