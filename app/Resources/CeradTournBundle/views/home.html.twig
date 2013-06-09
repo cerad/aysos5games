@@ -49,9 +49,10 @@
         {% else %}
            <tr><td colspan="2">Please set your plans.</td></tr>
         {% endif %}
-           <tr><td colspan="2"><a href="{{ path('cerad_tourn_person_plan',{ id: person.id }) }}">Update your plans.</td></tr>
+           <tr><td colspan="2"><a href="{{ path('cerad_tourn_person_plan',{ id: person.id }) }}">Update Plan.</td></tr>
         </table></td>
     </tr>
    {% endfor %}
+    <tr><th colspan="5"><a href="{{ path('cerad_tourn_person_person_add') }}">Add Person to Account</a></th></tr>
 </table
 {% endblock %}
