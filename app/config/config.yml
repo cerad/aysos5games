@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: doctrine.yml }
     - { resource: project.yml  }
+    - { resource: routes.yml   }
 
 framework:
     #esi:             ~

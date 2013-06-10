@@ -1,0 +1,31 @@
+<div>
+<form action="{{ path('zayso_core_account_openid_add') }}" method="post" >
+<table border="1" style="width: 800px;">
+    <tr><th colspan="5">Account Social Networks</th></tr>
+    <tr>
+        <th>Zayso User Name</th>
+        <th>Zayso Person Name</th>
+        <th>Social Provider</th>
+        <th>Social User Name</th>
+        <th>Remove</th>
+    </tr>
+    {% for openid  in account.openids %}
+    <tr>
+        <td>{{ account.userName   }}</td>
+        <td>{{ account.person.personName }}</td>
+        <td>{{ openid.provider }}</td>
+        <td>{{ openid.userName }}</td>
+        <td align="center"><input type="checkbox" name="openids[remove][{{openid.id}}]" value="{{openid.id}}" /></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="4">
+        Click on a social network icon below to link an additional social network to your Zayso account.
+        Click <a href="{{ path('zayso_core_home') }}">Home</a> when done.
+      </td>
+      <td><input type="submit" name="openidRemoveSubmit" value="Remove" /></td>
+    </tr>
+</table>
+</form>
+</div>
+

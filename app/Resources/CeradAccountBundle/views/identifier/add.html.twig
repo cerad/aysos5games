@@ -1,0 +1,31 @@
+{% extends '@CeradAccount/layout.html.twig' %}
+
+{% block janrain %}{% include '@CeradJanrain/Janrain/janrain.js.twig' %}{% endblock %}
+
+{% block content %}
+
+{# include myBundleName ~ ':Account/Openid:list.html.twig' #}
+
+{% if error %}
+<div style="color: red;">{{ error }}</div>
+{% endif %}
+<h3>Social Networking (Google,Facebook,Twitter etc.) Accounts</h3>
+<p>
+  One of the problems with sites like Zayso is that it is all too easy to forget your user name and password.
+  Recovering passwords and such is just no fun at all.  However, you can now link your Zayso account to one or
+  more social networking accounts such as Facebook or Google.  Once linked, you can sign in to Zayso by clicking on the
+  social network icon.  No more having to remember your Zayso account name or password.
+</p><p>
+Click on the icon(below) of the site you wish to link to Zayso.  You can link multiple sites(one at a time) if you wish.
+Zayso never sees the password of the social networking site.
+You will always be redirected to the social site itself before being asked for a password.
+You should also be aware that some sites indicate that Zayso can update your information.
+Zayso does not in fact have the ability to update any information on the social sites.
+</p>
+<p>
+If you do not wish to use one of the common sites then use the myOpenID one.
+This is a very generic account management site with the usual password recovery features.
+<a href="http://www.myopenid.com/" target="_blank">Click here to create an account on myOpenID</a> which you can then link to Zayso.
+</p>
+<div id="janrainEngageEmbed"></div>
+{% endblock %}

@@ -1,0 +1,7 @@
+# ==============================================
+# Trying to figure out how to customize things like the route processing
+# Need some generic route names mostly for error recovery and whatnot
+parameters:
+  cerad_route_welcome: cerad_tourn_welcome
+  cerad_route_home:    cerad_tourn_home
+  
