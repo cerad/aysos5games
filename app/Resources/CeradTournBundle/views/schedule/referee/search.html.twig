@@ -55,6 +55,11 @@
     {% endfor %}
     <tr>
     </table></td> 
+    <td><table border="1">
+    <tr><th colspan="20">Search/Filter</th></tr>
+    <tr><td>Teams    </td><td>{{ form_widget(form.teamFilter)    }}</td></tr>
+    <tr><td>Officials</td><td>{{ form_widget(form.refereeFilter) }}</td></tr>
+    </table></td> 
 </tr>
 </table>
 </td>
