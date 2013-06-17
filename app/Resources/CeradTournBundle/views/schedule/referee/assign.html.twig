@@ -35,11 +35,24 @@
     </table></td></tr>
     <tr>
         <td><a href="{{ path('cerad_tourn_schedule_referee_list') }}#ref-sched-{{game.num}}">Referee Schedule</a></td>
-        <td align="right"><input type="submit" name="refAssignSubmit" value="Sign Up" /></td>
+        <td align="right">
+            {% if enabled %}
+            <input type="submit" name="refAssignSubmit" value="Sign Up" />
+            {% else %}
+            Referee signups are disabled.
+            {% endif %}
+        </td>
     </tr>
 </table>
 {{ form_rest(form) }}        
 </form>
+{% if enabled != true %}
+<h3>Referee signups are currently disabled.</h3>
+<p>The tournament is over.  
+    If you did games that you were not signed up for then send an email to Art Hundiak and I'll update the master schedule.
+    Also, let me know if you ended up doing your own child's game.  Be thanks to everyone who helped.
+</p>
+{% endif %}
 <h3>Instructions</h3>
 <p>
     You must be signed on in order to sign up for a game.  Your user information should be shown along the very top of the page.
