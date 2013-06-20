@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <title>{% block title %}S5Games{% endblock %}</title>
     <meta name="description" content="Cerad Referee Scheduling"/>
-    <meta name="author" content="Art Hundiak"/>
+    <meta name="author"      content="Art Hundiak"/>
     
 {% block stylesheets %}
     {# stylesheets output='bundles/appcore/css/app.css' debug=false
@@ -12,29 +12,41 @@
         '@CeradTournBundle/Resources/public/css/layout.css'
         '@CeradTournBundle/Resources/public/css/core.css'
     #}
-        <link rel="stylesheet" href="{{  asset('bundles/ceradtourn/css/reset.css')}}"  media="all" />
-        <link rel="stylesheet" href="{{  asset('bundles/ceradtourn/css/layout.css')}}" media="all" />
-        <link rel="stylesheet" href="{{  asset('bundles/ceradtourn/css/core.css')}}"   media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/reset.css')    }}" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/layout.css')   }}" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/core.css')     }}" media="all" />    
+    <link rel="stylesheet" href="{{ asset('bundles/ceradaccount/css/account.css')}}" media="all" />
+        
+    <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/forms.css')    }}" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/ceradtourn/css/schedule.css') }}" media="all" />
+    
     {# endstylesheets #}
 {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/ceradapp/images/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/ceradapp/images/favicon.ico') }}" />
+
+{% set referer = cerad_tourn_get_referer() %}
+    
+{% if referer %}
+    <script src="{{ referer }}wp-content/themes/2014NationalGames/js/zayso.js"   type="text/javascript"></script>
+    <link  href="{{ referer }}wp-content/themes/2014NationalGames/css/zayso.css" type="text/css" rel="stylesheet" media="screen" />
+{%endif %}
 
 {# Need this at the top to remember which account was last used to sign in #}
 {% block janrain %}{% endblock %}
     
 {% block jquery %}{% endblock %}
-
+       
 <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
 </head>
 <body>
-{% if cerad_tourn_show_header() %}
-{{ include('@CeradTourn/header.html.twig')  }}
-{% endif %}
-{{ include('@CeradTourn/topmenu.html.twig') }}
+{{ include('@CeradTourn/header.html.twig')   }}
+{{ include('@CeradTourn/topmenu.html.twig')  }}
+{{ include('@CeradTourn/userinfo.html.twig') }}
+        
 <div id="layout-content">
   {% block content %}{% endblock %}
 </div>

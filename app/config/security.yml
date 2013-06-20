@@ -33,7 +33,7 @@ security:
                 add_path:            cerad_janrain_add
                 check_path:          cerad_janrain_check
                 login_path:          cerad_janrain_login
-                register_path:       fos_user_registration_register
+                create_path:         cerad_account_create
                 default_target_path: cerad_tourn_home
                 rpx_api_key:        %cerad_janrain_rpx_api_key%
              

@@ -1,0 +1,14 @@
+<div id="zayso_layout_userinfo" class="zayso_layout_userinfo">
+    <p style="margin-top: 2px; color: black; ">
+      <span style="color: blue;">Zayso User: </span>
+      <span style="color: green;">       
+        {% if is_granted('ROLE_USER') %}
+            {{ app.user.name }} 
+            {{ app.user.person.leagueAYSOVolunteer.identifier }}
+            <a href="{{ path('fos_user_security_logout') }}">Sign Out</a>
+        {% else %}
+            Guest <a href="{{ path('cerad_tourn_account_signin') }}">Sign In</a>
+        {% endif %}          
+      </span>
+    </p>
+</div>

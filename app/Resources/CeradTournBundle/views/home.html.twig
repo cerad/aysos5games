@@ -26,7 +26,7 @@
             <tr><td>Relation:</td><td>{{ personPerson.role }}</td></tr>
             {% if personPerson.isRolePrimary %}
             <tr><td>Account:</td><td>
-                <a href="{{ path('cerad_tourn_account_edit', { 'id': account.id }) }}">
+                <a href="{{ path('cerad_account_edit', { 'id': account.id }) }}">
                     {{ account.username }}
                 </a>
             </td></tr>
