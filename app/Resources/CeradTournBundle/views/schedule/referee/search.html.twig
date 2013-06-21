@@ -1,79 +1,48 @@
 {% if searchForm is defined  %}
 {% set form = searchForm     %}
-<div class="schedule-search">
-<form action="{{ path('cerad_tourn_schedule_referee_list') }}" method="post" {{ form_enctype(form) }}>
-<table border="1" style="width: 900px;">
+<form 
+    action="{{ path('cerad_tourn_schedule_referee_list') }}" 
+    method="post" {{ form_enctype(form) }}
+    style="border: none;"
+    class="zayso_schedule_search_form"
+>
+<table border="1" style="width: 1000px;">
 <tr>
-<td colspan="2">
-<table>
-<tr>
-    <td><table border="1">
-    <tr><th colspan="20">Days</th></tr>
-    <tr>
-    {% set itemFirst = true %}         
-    {% for item in form.dates %}
-        <td align="center">{{ form_label(item) }}<br />
-        {% if itemFirst %}
-            {{ form_widget(item, { 'attr': {'class': 'zayso-checkbox-all' }}) }}</td>
-        {% else %}
-            {{ form_widget(item) }}</td>
-        {% endif %}
-        {% set itemFirst = false %}
-    {% endfor %}
-    <tr>
-    </table></td>
-    
-    <td>
-    <table border="1">
-    <tr><th colspan="20">Ages</th></tr>
-    <tr>
-    {% set itemFirst = true %}         
-    {% for item in form.ages %}
-        <td align="center">{{ form_label(item) }}<br />
-        {% if itemFirst %}
-            {{ form_widget(item, { 'attr': {'class': 'zayso-checkbox-all' }}) }}</td>
-        {% else %}
-            {{ form_widget(item) }}</td>
-        {% endif %}
-        {% set itemFirst = false %}
-    {% endfor %}
-    <tr>
-    </table></td>
-    
-    <td><table border="1">
-    <tr><th colspan="20">Genders</th></tr>
-    <tr>
-    {% set itemFirst = true %}         
-    {% for item in form.genders %}
-        <td align="center">{{ form_label(item) }}<br />
-        {% if itemFirst %}
-            {{ form_widget(item, { 'attr': {'class': 'zayso-checkbox-all' }}) }}</td>
-        {% else %}
-            {{ form_widget(item) }}</td>
-        {% endif %}
-        {% set itemFirst = false %}
-    {% endfor %}
-    <tr>
-    </table></td> 
-    <td><table border="1">
-    <tr><th colspan="20">Search/Filter</th></tr>
-    <tr><td>Teams    </td><td>{{ form_widget(form.teamFilter)    }}</td></tr>
-    <tr><td>Officials</td><td>{{ form_widget(form.refereeFilter) }}</td></tr>
-    </table></td> 
+  <td colspan="2">
+    <table> {# Use this to get the check box tables to go across the screen #}
+      <tr>
+        <td>
+          {% set items = form.dates %}
+          {% include '@CeradTourn/schedule/search/checkbox.html.twig' %}
+        </td><td>
+          {% set items = form.ages %}
+          {% include '@CeradTourn/schedule/search/checkbox.html.twig' %}
+        </td><td>
+          {% set items = form.genders %}
+          {% include '@CeradTourn/schedule/search/checkbox.html.twig' %}
+        </td><td>
+          {% set items = form.venues %}
+          {% include '@CeradTourn/schedule/search/checkbox.html.twig' %}
+        </td>
+      </tr>
+    </table>
 </tr>
-</table>
-</td>
-</tr><tr>
+<tr>
+    <td colspan="2"><table border="1">
+    <tr><th colspan="20">Search/Filter</th></tr>
+    <tr><td>Game Numbers</td><td>{{ form_widget(form.numFilter)     }}</td></tr>
+    <tr><td>Teams       </td><td>{{ form_widget(form.teamFilter)    }}</td></tr>
+    <tr><td>Officials   </td><td>{{ form_widget(form.refereeFilter) }}</td></tr>
+    </table></td> 
 </tr>
 <tr>
     <td>
         <a href="{{ path('cerad_tourn_schedule_referee_list', { _format: 'xls'}) }}">Spreadsheet</a>
         <a href="{{ path('cerad_tourn_schedule_referee_list', { _format: 'csv'}) }}">Text File</a>
     </td>
-    <td colspan="8" align="right"><input type="submit" name="schSearchSubmit" value="Search" /></td>
+    <td align="right"><input type="submit" name="schSearchSubmit" value="Search" /></td>
 </tr>
 </table>
 <div style="display: none;">{{ form_rest(form) }}</div>
-</form>        
-</div>
+</form>
 {% endif %}

@@ -1,111 +1,130 @@
 parameters:
   
-   #cerad_tourn_project_key: AYSOS5Games2013
+  cerad_tourn_project:
 
-    cerad_tourn_project:
-
-        info:     
-          key:       AYSOS5Games2013
-          status:    Active
-          season:    SU2013
-          sport:     Soccer
-          domain:    AYSOS05
-          domainSub: Games
+    info:     
+      key:       AYSOS5Games2013
+      status:    Completed
+      season:    SU2013
+      sport:     Soccer
+      domain:    AYSOS05
+      domainSub: Games
              
-          title:   "AYSO Section 5 Games 2013"
-          desc:    "AYSO Section 5 Games 2013 - June 14,15,16 - Knoxville, TN"
+      title:   "AYSO Section 5 Games 2013"
+      desc:    "AYSO Section 5 Games 2013 - June 14,15,16 - Knoxville, TN"
             
-        # ==============================================
-        # For the search form
-        dates:
-         #'All':        All
+    # ==============================================
+    # For the search form
+    # Nothe that the names directly map to the GameManager search parameters
+    searches:
+      
+      dates:
+        type:     checkbox
+        label:    Days
+        default: '2013-06-16'
+        choices:
           '2013-06-14': Fri
           '2013-06-15': Sat
           '2013-06-16': Sun
-         
-        genders:
-         #All: All
+          
+      genders:
+        type:    checkbox
+        label:   Genders
+        default: ~
+        choices:
           B:   Boys
           G:   Girls
           
-        ages:
-         #All: All
+      ages:
+        type:    checkbox
+        label:   Ages
+        default: [U12,U16]
+        choices:
           U10: U10
           U12: U12
           U14: U14
           U16: U16
           U19: U19
           
-        # ==============================================
-        # Plan meta data
-        plan:
+      venues:
+        type:    checkbox
+        label:   Venues
+        default: ~
+        choices:
+          BC:   Ball Camp
+          NB:   Nicholas Park
+          Pell: Pellissippi
+  
+    # ==============================================
+    # Plan meta data
+    plan:
          
-         attending:
-           type:    select
-           label:   I will attend the games
-           default: na
-           choices:
-             na:    Need Answer
-             No:    No
-             Yes:   Yes
-             Maybe: Maybe
+      attending:
+        type:    select
+        label:   I will attend the games
+        default: na
+        choices:
+          na:    Need Answer
+          No:    No
+          Yes:   Yes
+          Maybe: Maybe
            
-         refereeing:
-           type:    select
-           label:   I will referee
-           default: No
-           choices: { No: No, Yes: Yes, Maybe: Maybe}
+      refereeing:
+        type:    select
+        label:   I will referee
+        default: No
+        choices: { No: No, Yes: Yes, Maybe: Maybe}
                         
-         assessing:
-           type:    select
-           label:   I will do assessments/observations
-           default: No
-           choices: { No: No, Yes: Yes, Maybe: Maybe}
+      assessing:
+        type:    select
+        label:   I will do assessments/observations
+        default: No
+        choices: { No: No, Yes: Yes, Maybe: Maybe}
            
-         reqAssess:
-           type:    select
-           label:   I request an assessment or observation
-           default: No
-           choices: 
-             No:           No 
-             Informal:     Informal 
-             Intermediate: Intermediate
-             AdvancedCR:   Advanced CR
-             AdvancedAR:   Adcanced AR
-             AdvancedCRAR: Advanced CR and AR
-             NationalCR:   National CR
-             NationalAR:   Advanced AR
-             NationalCRAR: National CR and AR
+      reqAssess:
+        type:    select
+        label:   I request an assessment or observation
+        default: No
+        choices: 
+          No:           No 
+          Informal:     Informal 
+          Intermediate: Intermediate
+          AdvancedCR:   Advanced CR
+          AdvancedAR:   Adcanced AR
+          AdvancedCRAR: Advanced CR and AR
+          NationalCR:   National CR
+          NationalAR:   Advanced AR
+          NationalCRAR: National CR and AR
              
-         coaching:
-           type:    select
-           label:   I will coach or manage a team
-           default: No
-           choices: { No: No, Yes: Yes, Maybe: Maybe}
+      coaching:
+        type:    select
+        label:   I will coach or manage a team
+        default: No
+        choices: { No: No, Yes: Yes, Maybe: Maybe}
            
-         volunteering:
-           type:    select
-           label:   I will volunteer for other jobs
-           default: No
-           choices: { No: No, Yes: Yes, Maybe: Maybe}
+      volunteering:
+        type:    select
+        label:   I will volunteer for other jobs
+        default: No
+        choices: { No: No, Yes: Yes, Maybe: Maybe}
            
-         playing:
-           type:    select
-           label:   I have (or am) a player in the games
-           default: No
-           choices: { No: No, Yes: Yes, Player: Yes - I am a player }
+      playing:
+        type:    select
+        label:   I have (or am) a player in the games
+        default: No
+        choices: { No: No, Yes: Yes, Player: Yes - I am a player }
            
-         tshirt:
-           type:    select
-           label:   T-Shirt Size
-           default: na
-           choices: 
-             na:        na
-             youthm:    Youth Medium 
-             youthl:    Youth Large
-             adults:    Adult Small
-             adultm:    Adult Medium
-             adultl:    Adult Large
-             adultlx:   Adult Large X
-             adultlxx:  Adult Large XX
-             adultlxxx: Adult Large XXX
+      tshirt:
+        type:    select
+        label:   T-Shirt Size
+        default: na
+        choices: 
+          na:        na
+          youthm:    Youth Medium 
+          youthl:    Youth Large
+          adults:    Adult Small
+          adultm:    Adult Medium
+          adultl:    Adult Large
+          adultlx:   Adult Large X
+          adultlxx:  Adult Large XX
+          adultlxxx: Adult Large XXX
