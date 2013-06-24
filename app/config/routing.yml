@@ -44,6 +44,18 @@ cerad_person_bundle:
   resource: "@CeradPersonBundle/Resources/config/routing.yml"
   prefix: /person
   
+# ==================================================
+# My own game stuff
+cerad_game:
+  resource: "@CeradGameBundle/Resources/config/routing.yml"
+  prefix: /game
+
+cerad_game_home:
+  path: /home
+  
+cerad_game_welcome:
+  path: /welcome 
+  
 # Redirect profile to home page
 fos_user_profile_show:
   path: /home
