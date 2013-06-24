@@ -40,9 +40,9 @@ cerad_account:
   prefix: /account
   
 # My own person stuff
-# cerad_person_bundle:
-#   resource: "@CeradPersonBundle/Resources/config/routing.yml"
-#   prefix: /person
+cerad_person_bundle:
+  resource: "@CeradPersonBundle/Resources/config/routing.yml"
+  prefix: /person
   
 # Redirect profile to home page
 fos_user_profile_show:
