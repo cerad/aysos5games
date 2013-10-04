@@ -1,18 +1,21 @@
 /web/bundles/
 /app/bootstrap*
+/app/sessions/*
 /app/cache/*
 /app/logs/*
 /vendor/
+/vendor.zip
 /app/config/parameters.yml
 
 /nbproject/private
 /nbprojectx/
 
 /web/info.php
-/composer.lock
 /.sass-cache
 /app/SymfonyRequirements.php
 /app/check.php
 /app/phpunit.xml
 
 /src/Acme/
+/composer.lock
+

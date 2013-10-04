@@ -16,7 +16,7 @@ doctrine:
                 driver:   %database_driver%
                 host:     %database_host%
                 port:     %database_port%
-                dbname:   %database_name_games%
+                dbname:   %database_name%
                 user:     %database_user%
                 password: %database_password%
                 charset:  UTF8
@@ -24,7 +24,7 @@ doctrine:
                 driver:   %database_driver%
                 host:     %database_host%
                 port:     %database_port%
-                dbname:   %database_name_accounts%
+                dbname:   %database_name%
                 user:     %database_user%
                 password: %database_password%
                 charset:  UTF8
@@ -32,7 +32,7 @@ doctrine:
                 driver:   %database_driver%
                 host:     %database_host%
                 port:     %database_port%
-                dbname:   %database_name_persons%
+                dbname:   %database_name%
                 user:     %database_user%
                 password: %database_password%
                 charset:  UTF8
@@ -40,7 +40,7 @@ doctrine:
                 driver:   %database_driver%
                 host:     %database_host%
                 port:     %database_port%
-                dbname:   %database_name_legacy2012%
+                dbname:   %database_name%
                 user:     %database_user%
                 password: %database_password%
                 charset:  UTF8
@@ -48,37 +48,16 @@ doctrine:
     orm:
         default_entity_manager:       default
         auto_generate_proxy_classes: %kernel.debug%
-       #auto_mapping: true
-                
         entity_managers:
-          
             default:
                 connection: default
-                mappings:
-
-            games:
-               connection: games
-               mappings:
-                    CeradGameBundle: ~
-               dql:
+                mappings: 
+                  CeradGameBundle:   ~
+                  CeradUserBundle:   ~
+                  CeradPersonBundle: ~
+                dql:
                     datetime_functions:
                         date:  Cerad\Bundle\GameBundle\Doctrine\DQL\Date
                         time:  Cerad\Bundle\GameBundle\Doctrine\DQL\Time
                         month: Cerad\Bundle\GameBundle\Doctrine\DQL\Month
-                        
-            accounts:
-               connection: accounts
-               mappings:
-                    FOSUserBundle: ~
-                    CeradAccountBundle: ~
-                    
-            persons:
-               connection: persons
-               mappings:
-                    CeradPersonBundle: ~
-                    
-            legacy2012:
-               connection: legacy2012
-               mappings:
-                    CeradLegacy2012Bundle: ~
-                       
+                                       

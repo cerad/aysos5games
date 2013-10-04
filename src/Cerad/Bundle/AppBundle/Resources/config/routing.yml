@@ -1,0 +1,3 @@
+cerad_tourn:
+    resource: "@CeradTournBundle/Resources/config/routing.yml"
+    prefix:   /

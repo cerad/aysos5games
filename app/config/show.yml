@@ -1,0 +1,25 @@
+parameters:
+  
+    cerad_tourn_show_configs:
+      
+        s1:
+            layout_header:  false
+            layout_topmenu: true
+            layout_userinfo: true
+            janrain:        false  # Social network login
+            wordpress:      true  # Style sheets and javascripts
+            
+        rick:
+            layout_header:  false
+            layout_topmenu: true
+            layout_userinfo: true
+            janrain:        false  # Social network login
+            wordpress:      true  # Style sheets and javascripts
+        
+        default:
+            layout_header:  false
+            layout_topmenu: false
+            layout_userinfo: true
+            janrain:        true
+            wordpress:      false
+            

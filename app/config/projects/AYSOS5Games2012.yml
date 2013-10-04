@@ -1,0 +1,274 @@
+  
+AYSOS1GamesUpperFall2013:  
+    info:
+        id: AYSOS1GamesUpperFall2013
+        slugs:
+            - s1games
+            - s1game2013
+            
+        status:   Active
+        verified: Yes
+                
+        fedId:     AYSO
+        fedRoleId: AYSOV
+                
+        title:   "AYSO Section One U16/U19 Games 2013"
+        desc:    "AYSO Section One U16/U19 Games -- Ayala Park, Chino -- 23-24 November 2013"
+                          
+        results: s1games
+        
+    # ==============================================
+    # For the schedule search form
+    searches:
+      
+      dates:
+        type:     checkbox
+        label:    Days
+        default: ['2013-11-23','2013-11-24']
+        choices:
+          '2013-11-23': Sat
+          '2013-11-24': Sun
+          
+      levels:
+        type:     checkbox
+        label:    Levels
+        default: ['AYSO_U16B_Core','AYSO_U16G_Core','AYSO_U19B_Core','AYSO_U19G_Core']
+        choices:
+         #'All':            All
+          'AYSO_U16B_Core': U16B
+          'AYSO_U16G_Core': U16G
+          'AYSO_U19B_Core': U19B
+          'AYSO_U19G_Core': U19G
+          
+     #genders:
+     #  type:    checkbox
+     #  label:   Genders
+     #  default: ~
+     #  choices:
+     #    B:   Boys
+     #    G:   Girls
+          
+     #ages:
+     #  type:    checkbox
+     #  label:   Ages
+     #  default: [U12,U16]
+     #  choices:
+     #    VIP: VIP
+     #    U16: U16
+     #    U19: U19
+        
+    #times: # Want this to be a select
+    #  start: 0600
+    #  end:   2000
+    
+     #venues:
+     #  type:    checkbox
+     #  label:   Venues
+     #  default: AB
+     #  choices:
+     #    AB: Ab Brown Soccer Complex, Riverside
+    
+    # ==================================================
+    # Basic volunteer plan
+    basic:
+      attending:
+        type:    select
+        label:   I will attend the Upper Division Playoffs
+        default: na
+        choices:
+          na:    Not yet answered
+          no:    No
+          yes:   Yes - For Sure
+          yesx:  Yes - If my team is selected
+          maybe: Maybe
+                    
+      refereeing:
+        type:    select
+        label:   I will referee
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure }
+        
+      #venue:
+      #  type:    select
+      #  label:   I will work at
+      #  default: na
+      #  choices: 
+      #    na:    Not yet answered
+      #    core:  Torrance/Redondo Beach (CORE site)
+      #    extra: Riverside (EXTRA site)
+      #    other: Where needed (either site)
+           
+#     refLevelCR:
+#       type:    select
+#       label:   Level to center at
+#       default: na
+#       choices: { na: na, U10: U10, U12: U12, U14: U14, U16: U16, U19: U19
+             
+#     refLevelAR:
+#       type:    select
+#       label:   Level to assist at
+#       default: na
+#       choices: { na: na, U10: U10, U12: U12, U14: U14, U16: U16, U19: U19
+             
+      #willInstruct:
+      #  type:    select
+      #  label:   I am certified Instructor
+      #  default: no
+      #  choices: { no: No, ri: Referee Instructor, ari: Advanced Referee Instructor, nri: National Referee Instructor}
+      #     
+      #willAssess:
+      #  type:    select
+      #  label:   I am certified Assessor
+      #  default: no
+      #  choices: { no: No, ra: Referee Assessor, nra: National Referee Assessor}
+      #     
+      willMentor:
+        type:    select
+        label:   I will be available as a mentor
+        default: no
+        choices: { no: No, yes: Yes}
+           
+      wantMentor:
+        type:    select
+        label:   I would like to work with a mentor
+        default: no
+        choices: { no: No, yes: Yes}
+           
+      #willAssess:
+      #  type:    select
+      #  label:   I will do assessments/observations
+      #  default: no
+      #  choices: { no: No, yes: Yes, maybe: Not Sure}
+      #     
+      #wantAssess:
+      #  type:    select
+      #  label:   I request an assessment or observation
+      #  default: no
+      #  choices: 
+      #    no:           No 
+      #    Informal:     Informal 
+      #    Intermediate: Intermediate
+      #    AdvancedCR:   Advanced CR
+      #    AdvancedAR:   Adcanced AR
+      #    AdvancedCRAR: Advanced CR and AR
+      #    NationalCR:   National CR
+      #    NationalAR:   Advanced AR
+      #    NationalCRAR: National CR and AR
+             
+      coaching:
+        type:    select
+        label:   I will coach or manage a team
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+      volunteering:
+        type:    select
+        label:   I will volunteer for other jobs
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+      playing:
+        type:    select
+        label:   I have (or am) a player in the games
+        default: no
+        choices: { no: No, yes: Yes, player: Yes - I am a player }
+           
+      #opening:
+      #  type:    select
+      #  label:   I will attend the Tuesday Night Opening Ceremony?
+      #  default: no
+      #  choices: { no: No, yesRAL: Yes in Riverside, yesTOA: Yes in Torrance, maybe: Not Sure}
+      #  
+      tshirt:
+        type:    select
+        label:   T-Shirt Size
+        default: na
+        choices: 
+          na:        na
+          youthm:    Youth Medium 
+          youthl:    Youth Large
+          adults:    Adult Small
+          adultm:    Adult Medium
+          adultl:    Adult Large
+          adultlx:   Adult Large X
+          adultlxx:  Adult Large XX
+             
+      #shuttle:
+      #  type:    select
+      #  label:   I need shuttle service during the games
+      #  default: no
+      #  choices: { no: No, yes: Yes, maybe: Not Sure}
+      #     
+      #housing:
+      #  type:    select
+      #  label:   I would use low cost referee housing
+      #  default: no
+      #  choices: { no: No, yes: Yes, maybe: Not Sure}
+      #     
+      #hotel:
+      #  type:  text
+      #  label: Hotel staying at
+      #  size:  30
+        
+      notes:
+        type:  textarea
+        label: Notes
+        rows:  5
+        cols:  40
+        
+    # Break out availability
+    avail:
+      
+      #AvailWen:
+      #  type:    select
+      #  label:   Available Wednesday (Jamborees)
+      #  default: no
+      #  choices: { no: No, yesAM: Yes in the Morning, yesPM: Yes in the afternoon, maybe: Not Sure}
+      #     
+      #AvailThu:
+      #  type:    select
+      #  label:   Available Thursday (Pool Play)
+      #  default: no
+      #  choices: { no: No, yesAM: Yes in the Morning, yesPM: Yes in the afternoon, maybe: Not Sure}
+      #
+      #AvailFri:
+      #  type:    select
+      #  label:   Available Friday (Pool Play)
+      #  default: no
+      #  choices: { no: No, yesAM: Yes in the Morning, yesPM: Yes in the afternoon, maybe: Not Sure}
+      #
+      AvailSat_08-11:
+        type:    select
+        label:   Available Saturday Morning (8:00-11:00 Kickoff)
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+      AvailSat_11-14:
+        type:    select
+        label:   Available Saturday Mid-day (11:01-14:00 Kickoff)
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+
+      AvailSat_14-17:
+        type:    select
+        label:   Available Saturday Afternoon (14:01-17:00 Kickoff)
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+
+      AvailSat_08-11:
+        type:    select
+        label:   Available Sunday Morning (8:00-11:00 Kickoff)
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+      AvailSat_11-14:
+        type:    select
+        label:   Available Sunday Mid-day (11:01-14:00 Kickoff)
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+
+      AvailSat_14-17:
+        type:    select
+        label:   Available Sunday Afternoon (14:01-17:00 Kickoff)
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}

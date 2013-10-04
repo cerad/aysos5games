@@ -1,0 +1,8 @@
+parameters:
+
+    cerad_project_project_default: AYSOS5Games2012
+    
+    cerad_project_project_files:
+        - "%kernel.root_dir%/config/projects/AYSOS5Games2012.yml"
+        - "%kernel.root_dir%/config/projects/AYSOS1GamesUpperFall2013.yml"
+          

@@ -15,23 +15,17 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            
-            new FOS\UserBundle\FOSUserBundle(),
-            
-            new Cerad\Bundle\Legacy2012Bundle\CeradLegacy2012Bundle(),
-            
-            new Cerad\Bundle\AccountBundle   \CeradAccountBundle(),
-            new Cerad\Bundle\JanrainBundle   \CeradJanrainBundle(),
-            new Cerad\Bundle\PersonBundle    \CeradPersonBundle(),
-            new Cerad\Bundle\TournBundle     \CeradTournBundle(),
-            new Cerad\Bundle\TournAdminBundle\CeradTournAdminBundle(),
-            new Cerad\Bundle\GameBundle      \CeradGameBundle(),
-            new Cerad\Bundle\AppBundle       \CeradAppBundle(),
+          
+            new Cerad\Bundle\ProjectBundle\CeradProjectBundle(),
+            new Cerad\Bundle\PersonBundle \CeradPersonBundle(),
+            new Cerad\Bundle\UserBundle   \CeradUserBundle(),
+            new Cerad\Bundle\GameBundle   \CeradGameBundle(),
+            new Cerad\Bundle\LevelBundle  \CeradLevelBundle(),
+            new Cerad\Bundle\TournBundle  \CeradTournBundle(),
+            new Cerad\Bundle\AppBundle    \CeradAppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-          //$bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

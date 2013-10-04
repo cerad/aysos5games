@@ -1,57 +1,59 @@
 security:
+    hide_user_not_found: false
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
-        Cerad\Bundle\AccountBundle\Entity\AccountUser: 
-            id: cerad_account.user_encoder
+        Cerad\Bundle\UserBundle\Entity\User: 
+            id: cerad_user.user_encoder
 
     role_hierarchy:
-        ROLE_SCORER:       ROLE_USER
-        ROLE_ADMIN:       [ROLE_USER, ROLE_SCORER]
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_SCORER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-
+        ROLE_USER:        [ROLE_USER]
+        ROLE_SCORE_ENTRY: [ROLE_USER, ROLE_SCORE_ENTRY]
+        ROLE_SCORE_ADMIN: [ROLE_USER, ROLE_SCORE_ENTRY, ROLE_SCORE_ADMIN]
+        ROLE_ASSIGNOR:    [ROLE_USER, ROLE_ASSIGNOR]
+        ROLE_ADMIN:       [ROLE_USER, ROLE_ASSIGNOR, ROLE_SCORE_ADMIN, ROLE_ADMIN]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ASSIGNOR, ROLE_SCORE_ADMIN, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        
     providers:
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass,  roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-        cerad_account_user_provider:
-            id: cerad_account.user_provider
+                    user:  { password: user894,  roles: [ 'ROLE_USER' ] }
+                    admin: { password: admin894, roles: [ 'ROLE_ADMIN' ] }
+        cerad_tourn_account_user_provider:
+            id: cerad_user.user_provider
 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        main:
-            pattern:   ^/
             
+        main:
+            pattern:   ^/         
             anonymous: ~
             
-            cerad_janrain:
-                provider:            cerad_account_user_provider
-                add_path:            cerad_janrain_add
-                check_path:          cerad_janrain_check
-                login_path:          cerad_janrain_login
-                create_path:         cerad_account_create
-                default_target_path: cerad_tourn_home
-                rpx_api_key:        %cerad_janrain_rpx_api_key%
-             
             form_login:
-                provider:            cerad_account_user_provider
-                check_path:          fos_user_security_check
-                login_path:          cerad_tourn_account_signin
+                provider:            cerad_tourn_account_user_provider
+                login_path:          cerad_tourn_account_user_login
+                check_path:          cerad_tourn_account_user_login_check
                 default_target_path: cerad_tourn_home
 
-                username_parameter:  cerad_account_signin[username]
-                password_parameter:  cerad_account_signin[password]
-                csrf_parameter:      cerad_account_signin[_token]
+                username_parameter:  cerad_tourn_account_user_login[username]
+                password_parameter:  cerad_tourn_account_user_login[password]
+                csrf_parameter:      cerad_tourn_account_user_login[_token]
                 csrf_provider:       form.csrf_provider
                 intention:           authenticate
                 
             logout:
-                path:   fos_user_security_logout
+                path:   cerad_tourn_account_user_logout
                 target: cerad_tourn_welcome
+                                
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000  # 365 days in seconds
+                path:     cerad_tourn_welcome
+                domain:   ~
+                name:     zayso_remember_me
+                remember_me_parameter: cerad_tourn_account_user_login[remember_me]
 
 
     access_control:

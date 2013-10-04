@@ -1,6 +1,6 @@
 services:
-    cerad_app.schedule.import:
-        class:  Cerad\Bundle\AppBundle\Schedule\ScheduleImport
-        arguments:  
-            - '@cerad_tourn.schedule.manager'
+#    cerad_app.schedule.import:
+#        class:  Cerad\Bundle\AppBundle\Schedule\ScheduleImport
+#        arguments:  
+#            - '@cerad_tourn.schedule.manager'
   

@@ -1,9 +1,10 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
-    - { resource: doctrine.yml }
-    - { resource: project.yml  }
-    - { resource: routes.yml   }
+    - { resource: security.yml   }
+    - { resource: doctrine.yml   }
+    - { resource: projects.yml   }
+    - { resource: levels.yml     }
+    - { resource: show.yml       }
 
 framework:
     #esi:             ~
@@ -14,13 +15,15 @@ framework:
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
-    validation:      { enable_annotations: true }
+    validation:      { enable_annotations: false }
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session:         
+        name:        zayso_session
+        save_path: "%kernel.root_dir%/sessions"
     fragments:       ~
 
 # Twig Configuration
@@ -43,31 +46,9 @@ assetic:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
-    username:  %mailer_user%
-    password:  %mailer_password%
-    spool:     { type: memory }
-
-# FOSUser Configuration
-fos_user:
-    db_driver:     orm
-    firewall_name: main
-    user_class:    Cerad\Bundle\AccountBundle\Entity\AccountUser
-    model_manager_name: accounts
-    
-    service:
-        user_manager: cerad_account.user_manager
-    
-#   from_email:
-#       address:        noreply@zayso.org
-#       sender_name:    Zayso No Reply
-    
-    registration:
-        form:
-            type:               cerad_account_registration
-        confirmation:
-            enabled:            true
-            from_email:
-                address:        admin@zayso.org
-                sender_name:    Zayso Registration
+    transport:        %mailer_transport%
+    host:             %mailer_host%
+    username:         %mailer_user%
+    password:         %mailer_password%
+    disable_delivery: %mailer_disable_delivery%
+    spool:    { type: memory }
