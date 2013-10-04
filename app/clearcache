@@ -1,4 +1,4 @@
 #!/bin/bash
 php console cache:clear --env=prod --no-debug
-php console assets:install ../../zayso/web/s5games
-php console assetic:dump   ../../zayso/web/s5games
+php console assets:install ~/public_html/s5games
+php console assetic:dump   ~/public_html/s5games
