@@ -1,21 +1,27 @@
   
-AYSOS1GamesUpperFall2013:  
+AYSOS5Games2012:  
     info:
-        id: AYSOS1GamesUpperFall2013
+        id: AYSOS5Games2012
         slugs:
-            - s1games
-            - s1game2013
+            - s5games
+            - s5game2012
             
-        status:   Active
+        status:   Completed
         verified: Yes
                 
         fedId:     AYSO
         fedRoleId: AYSOV
                 
-        title:   "AYSO Section One U16/U19 Games 2013"
-        desc:    "AYSO Section One U16/U19 Games -- Ayala Park, Chino -- 23-24 November 2013"
+        title:   "AYSO Section 5 Games 2012"
+        desc:    "AYSO Section 5 Games 2012 - June 15,16,17 - Charlotte, NC"
                           
-        results: s1games
+        results: s5games
+   
+        season:    SU2012
+        sport:     Soccer
+        domain:    AYSOS05
+        domainSub: Games
+
         
     # ==============================================
     # For the schedule search form
@@ -24,17 +30,25 @@ AYSOS1GamesUpperFall2013:
       dates:
         type:     checkbox
         label:    Days
-        default: ['2013-11-23','2013-11-24']
+        default: ['2012-06-15']
         choices:
-          '2013-11-23': Sat
-          '2013-11-24': Sun
+          'All':        All
+          '2012-06-15': Fri
+          '2012-06-16': Sat
+          '2012-06-17': Sun
           
       levels:
         type:     checkbox
         label:    Levels
         default: ['AYSO_U16B_Core','AYSO_U16G_Core','AYSO_U19B_Core','AYSO_U19G_Core']
         choices:
-         #'All':            All
+          'All':            All
+          'AYSO_U10B_Core': U10B
+          'AYSO_U10G_Core': U10G
+          'AYSO_U12B_Core': U12B
+          'AYSO_U12G_Core': U12G
+          'AYSO_U14B_Core': U14B
+          'AYSO_U14G_Core': U14G
           'AYSO_U16B_Core': U16B
           'AYSO_U16G_Core': U16G
           'AYSO_U19B_Core': U19B
