@@ -51,13 +51,20 @@ doctrine:
         entity_managers:
             default:
                 connection: default
-                mappings: 
-                  CeradGameBundle:   ~
-                  CeradUserBundle:   ~
-                  CeradPersonBundle: ~
-                dql:
+                mappings:
+                    CeradOrgBundle:    ~
+                    CeradUserBundle:   ~
+                    CeradPersonBundle: ~
+
+            games:
+               connection: games
+               mappings:
+                    CeradGameBundle: 
+                        dir:    Resources/config/doctrine2
+                        prefix: Cerad\Bundle\GameBundle\Doctrine\Entity
+               dql:
                     datetime_functions:
-                        date:  Cerad\Bundle\GameBundle\Doctrine\DQL\Date
-                        time:  Cerad\Bundle\GameBundle\Doctrine\DQL\Time
-                        month: Cerad\Bundle\GameBundle\Doctrine\DQL\Month
+                        date:  Cerad\Bundle\CoreBundle\Doctrine\DQL\Date
+                        time:  Cerad\Bundle\CoreBundle\Doctrine\DQL\Time
+                        month: Cerad\Bundle\CoreBundle\Doctrine\DQL\Month
                                        
