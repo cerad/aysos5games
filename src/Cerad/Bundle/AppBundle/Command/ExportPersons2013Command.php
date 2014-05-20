@@ -23,7 +23,7 @@ class ExportPersons2013Command extends ContainerAwareCommand
         
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $conn =  $this->getService('doctrine.dbal.default_connection');
+        $conn =  $this->getService('doctrine.dbal.s5games2013_connection');
         $export = new ExportPersons2013($conn);
         
         $persons = $export->process();

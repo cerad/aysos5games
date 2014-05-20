@@ -11,42 +11,64 @@ class ExportPersons2013
         $this->conn = $conn;
     }
     /* =================================================================
+     * Authentication tokens
+     */
+    protected function processUserAuthens($userId)
+    {
+        $sql = <<<EOT
+SELECT
+    authen.provider_name AS source,
+    authen.identifier    AS identifier,
+    authen.status        AS status,
+    authen.profile       AS profile
+
+FROM  account_identifier AS authen
+WHERE account_id = :userId
+EOT;
+        $rows = $this->conn->fetchAll($sql,array('userId' => $userId));
+        foreach($rows as &$row)
+        {
+            $row['profile'] = unserialize($row['profile']);
+        }
+        return $rows;
+    }
+    /* =================================================================
      * Accounts
      */
     protected function processUsers($personGuid)
     {
         $sql = <<<EOT
 SELECT
-    user.person_guid      AS personGuid,
-    user.person_status    AS personStatus,
-    user.person_verified  AS personVerified,
-    user.person_confirmed AS personConfirmed,
+    user.person_guid AS personGuid,
                 
     user.id                 AS userId,
     user.username           AS username,
     user.username_canonical AS usernameCanonical,
     user.email              AS email,
     user.email_canonical    AS emailCanonical,
-    user.email_confirmed    AS emailConfirmed,
-                
+    
     user.salt               AS salt,
     user.password           AS password,
-    user.password_hint      AS passwordHint,
     user.roles              AS roles,
                 
-    user.account_name          AS accountName,
-    user.account_created_on    AS accountCreatedOn,
-    user.account_updated_on    AS accountUpdatedOn,
-    user.account_last_login_on AS accountLastLoginOn
+    user.name               AS accountName
 
-FROM  users AS user
+FROM  account_user AS user
 WHERE person_guid = :personGuid
 EOT;
+        $personGuid = str_replace('-','',$personGuid);
+        
         $rows = $this->conn->fetchAll($sql,array('personGuid' => $personGuid));
         
         foreach($rows as &$row)
         {
             $row['roles'] = unserialize($row['roles']);
+            $row['authens'] = $this->processUserAuthens($row['userId']);
+            unset($row['userId']);
+            
+            // Have 58 users where password is empty?
+            if (!$row['password']) $row['password'] = 'blank';
+            
         }
         return $rows;
     }
@@ -157,7 +179,7 @@ EOT;
                 substr($guid,20,12)
             );
             $row['feds' ] = $this->processFeds($guid);
-          //$row['users'] = $this->processUsers($row['guid']);
+            $row['users'] = $this->processUsers($row['guid']);
         }
         return $rows;
     }
