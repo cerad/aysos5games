@@ -1,0 +1,36 @@
+{% extends '@CeradApp/Base.html.twig' %}
+
+{% block layout_body %}
+<div id="layout-body">
+
+{# Currently set to false #}
+{% if cerad_tourn_show('layout_header') %}
+{% block layout_header %}
+<div id="layout-header">
+    {# render(controller('CeradTournBundle:Tourn/TournHeader:render')) #}
+</div>
+{% endblock %}
+{% endif %}
+
+{# S1Games has some isLocal stuff here and defines a dropline bar menu #}
+{% if cerad_tourn_show('layout_userinfo') %}
+{% block layout_userinfo %}
+<div id="layout-userinfo">
+    {# render(controller('CeradTournBundle:Tourn/TournUserInfo:render')) #}
+</div>
+{% endblock %}
+{% endif %}
+
+{# Currently set to true #}
+{% if cerad_tourn_show('layout_topmenu') %}
+{% block layout_topmenu %}
+<div id="layout-topmenu">
+    {# render(controller('CeradTournBundle:Tourn/TournTopMenu:render')) #}
+</div>
+{% endblock %}
+{% endif %}
+
+<div id="layout-content">{% block content %}{% endblock %}</div>
+
+</div>
+{% endblock %} {# end body block #}

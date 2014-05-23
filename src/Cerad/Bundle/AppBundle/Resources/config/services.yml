@@ -1,6 +1,18 @@
 services:
-#    cerad_app.schedule.import:
-#        class:  Cerad\Bundle\AppBundle\Schedule\ScheduleImport
-#        arguments:  
-#            - '@cerad_tourn.schedule.manager'
-  
+
+  # ====================================================
+  # Welcome             
+  cerad_app__welcome_controller:
+    class: Cerad\Bundle\AppBundle\Action\Welcome\WelcomeController
+    calls:
+      - [setRouter,     ['@router']]
+      - [setTemplating, ['@templating']]
+      
+  # ====================================================
+  # Index             
+  cerad_app__index_controller:
+    class: Cerad\Bundle\AppBundle\Action\Index\IndexController
+    calls:
+      - [setRouter,          ['@router']]
+      - [setSecurityContext, ['@security.context']]
+      

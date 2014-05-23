@@ -1,0 +1,177 @@
+  
+AYSOS5Games2014:  
+    info:
+        id: AYSOS5Games2014
+        slugs:
+            - s5games
+            - s5games2014
+            
+        status:   Active
+        verified: Yes
+                
+        fedId:     AYSO
+        fedRoleId: AYSOV
+                
+        title:   "AYSO Section 5 Games 2014"
+        desc:    "AYSO Section 5 Games 2014 - Knoxville, TN - June 13,14,15"
+        results: s5games
+        
+        submit:  "Emails your application to Art Hundiak and yourself."
+        prefix:   S5Games
+             
+        assignor:
+            name:  "Jody Kinsey"
+            email: "assignor.ng2014@gmail.com"
+            phone:  909.262.8806
+
+        system:
+            name:  "AYSO National Games 2014"
+            email: "no.response.ng2014@gmail.com"
+            phone:  ""
+
+        programs: [Core,Extra]
+        
+    # ==============================================
+    # For the schedule search form
+    searches:
+      
+      dates:
+        type:     checkbox
+        label:    Days
+        default: ['2014-06-13']
+        choices:
+          'All'       : All
+          '2014-06-13': Fri
+          '2014-06-14': Sat
+          '2014-06-15': Sun
+          
+      genders:
+        type:    checkbox
+        label:   Genders
+        default: ~
+        choices:
+          All: All
+          B:   Boys
+          G:   Girls
+          
+      ages:
+        type:    checkbox
+        label:   Ages
+        default: [U12,U16]
+        choices:
+          All: All
+         #VIP: VIP
+          U10: U10
+          U12: U12
+          U14: U14
+          U16: U16
+          U19: U19
+        
+      programs:
+        type:    checkbox
+        label:   Programs
+        default: [Core]
+        choices:
+          All: All
+          Core:  Core
+          Extra: Extra
+    
+    #times: # Want this to be a select
+    #  start: 0600
+    #  end:   2000
+    
+      venues:
+        type:    checkbox
+        label:   Venues
+        default: ~
+        choices:
+          RAL-AB:   Ab Brown Soccer Complex, Riverside
+          RAL-RP:   Reid Park, Riverside
+          TOA-CP:   Columbia Park, Torrance
+          TOA-FoD:  Field of Dreams, San Pedro
+          TOA-LLP:  Ladera Linda Park, Rancho Palos Verdes
+          TOA-MSF:  Maple Street Fields, Torrance
+          TOA-PMS:  Parras Middle School, Redondo Beach
+          TOA-RBHS: Redondo Beach High School, Redondo Beach
+          TOA-WHS:  West High School, Torrance
+    
+    # ==================================================
+    # Basic volunteer plan
+    basic:
+      attending:
+        type:    select
+        label:   I will attend the games
+        default: na
+        choices:
+          na:    Not yet answered
+          no:    No
+          yes:   Yes - For Sure
+          yesx:  Yes - If my team is selected
+          maybe: Maybe
+                    
+      refereeing:
+        type:    select
+        label:   I will referee
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure }
+        
+      venue:
+        type:    select
+        label:   I will work at
+        default: na
+        choices: 
+          na:    Not yet answered
+          core:  Torrance/Redondo Beach (CORE site)
+          extra: Riverside (EXTRA site)
+          other: Where needed (either site)
+           
+#     refLevelCR:
+#       type:    select
+#       label:   Level to center at
+#       default: na
+#       choices: { na: na, U10: U10, U12: U12, U14: U14, U16: U16, U19: U19
+             
+#     refLevelAR:
+#       type:    select
+#       label:   Level to assist at
+#       default: na
+#       choices: { na: na, U10: U10, U12: U12, U14: U14, U16: U16, U19: U19
+             
+      wantMentor:
+        type:    select
+        label:   I would like to work with a mentor
+        default: no
+        choices: { no: No, yes: Yes}
+           
+      volunteering:
+        type:    select
+        label:   I will volunteer for other jobs
+        default: no
+        choices: { no: No, yes: Yes, maybe: Not Sure}
+           
+      playing:
+        type:    select
+        label:   I have (or am) a player in the games
+        default: no
+        choices: { no: No, yes: Yes, player: Yes - I am a player }
+           
+      tshirt:
+        type:    select
+        label:   T-Shirt Size
+        default: na
+        choices: 
+          na:        na
+          youthm:    Youth Medium 
+          youthl:    Youth Large
+          adults:    Adult Small
+          adultm:    Adult Medium
+          adultl:    Adult Large
+          adultlx:   Adult Large X
+          adultlxx:  Adult Large XX
+          adultlxxx: Adult Large XXX
+                     
+      notes:
+        type:  textarea
+        label: Notes
+        rows:  5
+        cols:  40
